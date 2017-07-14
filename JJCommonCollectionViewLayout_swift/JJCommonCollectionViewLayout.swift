@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol JJCommonCollectionViewLayoutDataSource {
+@objc open protocol JJCommonCollectionViewLayoutDataSource {
     // MARK: - 必须实现的代理
     
     /// 返回每一个item的高度 高度不同则按瀑布流方式排布
@@ -40,7 +40,7 @@ import UIKit
 }
 
 
-class JJCommonCollectionViewLayout: UICollectionViewLayout {
+open class JJCommonCollectionViewLayout: UICollectionViewLayout {
     
     /// 代理
     fileprivate weak var dataSource: JJCommonCollectionViewLayoutDataSource?
