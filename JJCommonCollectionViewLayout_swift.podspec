@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name = 'JJCommonCollectionViewLayout_swift'
 s.version = '0.0.2'
-s.platform = :ios, '7.0'
+s.platform = :ios, '8.0'
 s.summary = '一个好用的布局，遵守几个代理，即可实现想要的布局。'
 s.homepage = 'https://github.com/andyfangjunjie/JJCommonCollectionViewLayout_swift'
 s.license = 'MIT'
