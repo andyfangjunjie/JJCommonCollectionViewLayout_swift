@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol JJCommonCollectionViewLayoutDataSource {
+@objc public protocol JJCommonCollectionViewLayoutDataSource {
     // MARK: - 必须实现的代理
     
     /// 返回每一个item的高度 高度不同则按瀑布流方式排布
@@ -40,7 +40,7 @@ import UIKit
 }
 
 
-class JJCommonCollectionViewLayout: UICollectionViewLayout {
+public class JJCommonCollectionViewLayout: UICollectionViewLayout {
     
     /// 代理
     fileprivate weak var dataSource: JJCommonCollectionViewLayoutDataSource?
@@ -48,14 +48,16 @@ class JJCommonCollectionViewLayout: UICollectionViewLayout {
     /// 初始化方法
     ///
     /// - Parameter dataSource: 代理
-    init(dataSource: JJCommonCollectionViewLayoutDataSource) {
+    public init(dataSource: JJCommonCollectionViewLayoutDataSource) {
         super.init()
         self.dataSource = dataSource
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+  
     
     // MARK: - 常量(默认属性)
     /// 每一个分区的列数
@@ -85,7 +87,7 @@ class JJCommonCollectionViewLayout: UICollectionViewLayout {
     fileprivate lazy var contentHeight: Float = 0
     
     // MARK: - layout基本设置
-    override func prepare() {
+    override public func prepare() {
         super.prepare()
         ///设置每一列的高度
         setupColumnHeight()
@@ -94,11 +96,11 @@ class JJCommonCollectionViewLayout: UICollectionViewLayout {
     }
     
     /// 返回indexPat位置的cell对应的布局属性
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return attributesArray[indexPath.section][indexPath.row]
     }
     /// 返回布局元素的数组
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         var array: [UICollectionViewLayoutAttributes] = Array()
         for section in 0..<attributesArray.count{
@@ -110,15 +112,15 @@ class JJCommonCollectionViewLayout: UICollectionViewLayout {
         return array
     }
     /// 返回区头、区尾布局元素
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
     }
     /// 返回装饰布局元素
-    override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    override public func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return UICollectionViewLayoutAttributes(forDecorationViewOfKind: elementKind, with: indexPath)
     }
     /// 返回内容大小
-    override var collectionViewContentSize: CGSize{
+    override public var collectionViewContentSize: CGSize{
         if let collectionViewHeight = collectionView?.frame.size.height{
             let height: CGFloat = CGFloat(contentHeight) + CGFloat(edgeInsetsOfOverall().bottom) > collectionViewHeight ? CGFloat(contentHeight) + CGFloat(edgeInsetsOfOverall().bottom) : collectionViewHeight + 1
             return CGSize(width: 0, height: height)
