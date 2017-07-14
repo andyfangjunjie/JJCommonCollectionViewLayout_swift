@@ -7,7 +7,7 @@ s.homepage = 'https://github.com/andyfangjunjie/JJCommonCollectionViewLayout_swi
 s.license = 'MIT'
 s.author = { 'andyfangjunjie' => 'andyfangjunjie@163.com' }
 s.source = {:git => 'https://github.com/andyfangjunjie/JJCommonCollectionViewLayout_swift.git', :tag => s.version}
-s.source_files = 'JJCommonCollectionViewLayout_swift/**/*.{h,m}'
+s.source_files = 'JJCommonCollectionViewLayout_swift/**/*.{swift}'
 s.requires_arc = true
 s.framework  = 'UIKit'
 end
